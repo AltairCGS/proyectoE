@@ -1,63 +1,22 @@
-<div [ngClass]="{'s-signup': isSignUp}" class="cont">
-    <div class="container">
-        <div class="form">
-            <h2>Iniciar Sesión</h2>
-            <div *ngIf="loginError" class="error-message">
-                <p>Usuario o contraseña incorrecto</p></div>
-            <div class="mb-4">
-            <label>
-                <span>Usuario</span>
-                <input type="text" name="username" [(ngModel)]="username">
-            </label>
-            <label>
-                <span>Contraseña</span>
-                <input type="password" name="password" [(ngModel)]="password">
-            </label>
-            <button class="submit" type="button" (click)="login()">Iniciar Sesión</button>
-            <p class="forgot-pass">Recuperar contraseña</p>
-
-            <div class="social-media">
-                <ul class="li"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" width="32" alt=""></ul>
-                <ul class="li"><img src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png" width="32" alt=""></ul>
-            </div>
+<div class="contenedor">
+  <div class="bg-black text-secondary px-4 py-5 text-center segundo">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">NODO - Mis cinco cuerpos</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">
+          Continuación del proyecto presentado en el módulo de Front-end,
+          implementando las funciones requeridas en el módulo actual.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button
+            type="button"
+            (click)="login()"
+            class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"
+          >
+            Iniciar sesión
+          </button>
         </div>
-
-        <div class="sub-cont">
-            <div class="img">
-                <div class="img-text m-up">
-                    <h2>¿Eres nuevo?</h2>
-                    <p>Crea una cuenta y descubre todo lo que tenemos para ofrecerte</p>
-                </div>
-                <div class="img-text m-in">
-                    <h2>¿Ya tienes una cuenta?</h2>
-                    <p>Si ya estás registrado, Inicia Sesión</p>
-                </div>
-                <div class="imgBtn" (click)="change()">
-                    <span *ngIf="isSignUp">Iniciar Sesión</span>
-                    <span *ngIf="!isSignUp">Crear Cuenta</span>
-                </div>
-            </div>
-            <div class="form signup">
-                <h2>Crear Cuenta</h2>
-                <label>
-                    <span>Nombre Completo</span>
-                    <input type="text">
-                </label>
-                <label>
-                    <span>Correo</span>
-                    <input type="email">
-                </label>
-                <label>
-                    <span>Contraseña</span>
-                    <input type="password">
-                </label>
-                <label>
-                    <span>Confirmar Contraseña</span>
-                    <input type="password">
-                </label>
-                <button type="button" class="submit" routerLink="formulario">Crear Cuenta</button>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>

@@ -1,56 +1,32 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
-const USERNAME1 = 'admin';
-const USERNAME2 = 'student';
-const PASSWORD = '12345';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements AfterViewInit{
-  @ViewChild('imgBtn')
-  imgBtn!: ElementRef;
-  public isSignUp = false;
+export class LoginComponent implements OnInit {
+  constructor(public auth: AuthService, private router: Router) {}
 
-  ngAfterViewInit() {
-    if (this.imgBtn && this.imgBtn.nativeElement) {
-    this.imgBtn.nativeElement.addEventListener('click', this.change.bind(this));
-    }
+  ngOnInit(): void {
+    this.auth.isAuthenticated$.subscribe(isAuthenticaed => {
+      console.log('entrando a la auntenticacion')
+      console.log(isAuthenticaed)
+      if (isAuthenticaed) {
+        console.log('usuario auntenticado')
+        this.router.navigate(['/main']);
+      }
+    })
   }
 
-  userinfo = {
-    username1: 'admin',
-    username2: 'student',
-    nombre: 'usuario',
-  }  
-  
-    username: string = '';
-    password: string = '';
-    loginError: boolean = false;
+  login() {
+    console.log('entrando al login')
+    this.auth.loginWithRedirect();
+  }
 
-    constructor(private router: Router) {
-
-    }
-
-    login() {
-        if(this.username === USERNAME1 
-          && this.password === PASSWORD) {
-            localStorage.setItem('user', JSON.stringify(this.userinfo));
-            this.router.navigate(['/main']);
-          }
-        else if(this.username === USERNAME2 
-            && this.password === PASSWORD) {
-                localStorage.setItem('user', JSON.stringify(this.userinfo));
-                this.router.navigate(['/main']);
-                }
-        else {
-          this.loginError = true;
-        }
-    }
-
-    change() {
-      this.isSignUp = !this.isSignUp;
-    }
+  logOut() {
+    this.auth.logout()
+  }
 }

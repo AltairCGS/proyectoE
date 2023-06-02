@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="auth.user$ | async as user">
     <nav class="navbar navbar-expand bg-dark secondary-color" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="/main">
@@ -49,10 +49,10 @@
                         class="btn btn-secondary primary-color m-0 p-0 pe-3 dropdown-toggle d-flex justify-content-center align-items-center"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="profile m-0 me-2">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="">
+                            <img src="{{user.picture}}" alt="">
                         </div>
                         <span class="mx-2">
-                            Jhon 
+                          {{ user.name }}
                         </span>
                     </button>
                     <ul class="dropdown-menu">
@@ -60,7 +60,7 @@
                         <li><a class="dropdown-item" href="#">Editar Curso</a></li>
                         <li><a class="dropdown-item" href="#">Configuracion</a></li>
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li><a class="dropdown-item" href="#">Ayuda</a></li>
+                        <li><button class="dropdown-item" (click)="logOut()" href="#">Cerrar sesion</button></li>
                     </ul>
                 </div>
                 <div class="dropdown d-sm-none">

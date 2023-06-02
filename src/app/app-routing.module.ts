@@ -12,12 +12,8 @@ import { PagosComponent } from './main/pagos/pagos.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
-  },
-  {
-    path: 'cursos/:id',
-    component: CursosComponent,
   },
   {
     path: 'login/formulario',
@@ -32,6 +28,10 @@ const routes: Routes = [
         component: MainComponent,
       },
       {
+        path: 'cursos/:id',
+        component: CursosComponent,
+      },
+      {
         path: 'pagos',
         component: PagosComponent,
       },
@@ -40,7 +40,7 @@ const routes: Routes = [
         component: FormcursosComponent,
       },
       {
-        path: '',
+        path: 'login',
         redirectTo: '/login',
         pathMatch: 'full',
       },

@@ -18,6 +18,8 @@ import { FormcursosComponent } from './main/section-cursos/formcursos/formcursos
 import { HttpClientModule } from '@angular/common/http';
 import { PagosComponent } from './main/pagos/pagos.component';
 
+import { AuthModule } from '@auth0/auth0-angular';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,14 @@ import { PagosComponent } from './main/pagos/pagos.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'dev-01zd21ssgzmznj46.us.auth0.com',
+      clientId: 'osO7y1EbeGpCYesReH9Bc9xuValxRyuJ',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

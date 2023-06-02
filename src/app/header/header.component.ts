@@ -1,5 +1,6 @@
 import { Component, ViewChild} from '@angular/core';
 // import { SectionCursosComponent, cursosInfo } from '../main/section-cursos/section-cursos.component';
+import { AuthService } from '@auth0/auth0-angular';
 
 
 @Component({
@@ -14,4 +15,10 @@ export class HeaderComponent {
   //   agregarCurso(nuevoCurso: cursosInfo) {
   //   this.sectionCursosComponent.agregarCurso(nuevoCurso);
   // }
+  constructor(public auth: AuthService) {}
+
+
+  logOut() {
+    this.auth.logout()
+  }
 }
